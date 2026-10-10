@@ -11,6 +11,7 @@ and to computing where software meets hardware.
 |---|---|---|---|
 | [AidRun · 助盲跑](#aidrun--助盲跑) | Blind runners need a sighted guide, but have no reliable way to book one | Built the iOS app, the backend and the Android app | Backend running in the cloud; app in pre-release testing |
 | [Minecraft planning study](#llm-agents-that-plan-in-minecraft) | LLM agents break down on long, multi-step plans | First author | Poster at the NEmo workshop, NeurIPS 2026 |
+| [Contrast-free CT](#contrast-free-ct-from-plain-scans) | Contrast CT needs an iodine injection that some patients can't safely take | Built the whole pipeline, with a hospital partner and an advisor | Ongoing; current model is below its target |
 | [SafePath](#safepath) | Map apps find the shortest walk, not the safest one | Built it alone | [Live demo](https://safepath-black.vercel.app) |
 
 ---
@@ -111,6 +112,48 @@ looking at results, and reported the results that went against our method.
 tables, and a replication on an open-weight model.
 Accepted as a poster at the NEmo workshop, NeurIPS 2026. Stack: JavaScript (Node.js, Mineflayer),
 Python. Code is private.
+
+---
+
+## Contrast-free CT from plain scans
+
+**The problem.** To see blood vessels and tumors clearly on a CT scan, doctors inject an iodine
+contrast agent. Some patients can't safely receive it — because of allergies or kidney problems
+— and every injection adds cost and a second scan. Could a model take the plain scan and
+generate what the contrast scan would look like, as a reading aid next to the real images?
+
+**What I'm doing.** Research with a hospital partner and an advisor, on chest and abdominal CT
+from lung cancer patients. The goal is an aid for reading scans, not a replacement for a real
+contrast scan — a 2024 clinical study with far more data reached the same limit.
+
+**How it works.** The plain scan and the contrast scan are taken at different moments, so I
+first align them (image registration with elastix). I train two kinds of models — a GAN
+(pix2pix-style, predicting the change from the plain scan) and a one-step diffusion model —
+pre-trained on public CT datasets. Every result is checked with patient-level 5-fold
+cross-validation, so no patient is in both training and testing.
+
+**Results — honestly.** The model is not there yet. Inside the body, the correlation between
+generated and real contrast images is r = 0.31 for the chest and 0.18 for the abdomen. The
+target I set was 0.5, and no single patient reached it. I report this as a clear result,
+not as "we need more data".
+
+**What was hard**
+
+- *The ruler kept moving.* An early score of r = 0.61 came from 5 patients and a different
+  setup. Just changing which slices were sampled moved r from 0.61 to 0.40 on the same model.
+  I now version every metric and never put numbers from different setups in one table.
+- *Model error vs. measurement error.* Because the two scans don't line up perfectly, part of
+  the "missing contrast" is misalignment, not the model. A reference built with perfect
+  anatomy but average brightness only reaches r ≈ 0.38 on the chest — so I stopped treating
+  the gap to 0.5 as the model's fault alone.
+- *Choosing the right checkpoint.* The metric first used to pick the best model rewarded
+  simply copying the input scan. I replaced it with one that looks at the enhanced regions.
+- *Patient privacy.* I wrote a privacy audit of the whole data flow. Data that leaves the
+  hospital machine is pseudonymized and date-shifted, and no patient images are published.
+
+**My role.** I built the whole pipeline — data processing, registration, training and
+evaluation (about 600 commits since July 2026). Python, PyTorch, MONAI, Diffusers, SimpleITK.
+Code and data are private.
 
 ---
 
