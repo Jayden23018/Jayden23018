@@ -2,12 +2,10 @@
 
 # Jayden
 
-I like building systems end to end — from the phone in someone's hand, to the server behind it,
-to the data it runs on. I'm most interested in information systems and in computing where
-software meets hardware and real people.
-
-Most of my work is in private repositories (a production service and unpublished research),
-so this page explains what is in them. Links go only to public code.
+I build software for real problems and real users. What I enjoy most is owning a system
+end to end — the app in someone's hand, the server behind it, the data underneath — and then
+checking that it actually works for the person using it. I'm drawn to information systems
+and to computing where software meets hardware.
 
 | Project | The problem | What I did | Where it is now |
 |---|---|---|---|
