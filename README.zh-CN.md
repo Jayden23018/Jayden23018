@@ -3,16 +3,15 @@
 # Jayden Wang
 
 我是 Jayden，在深圳。我做了一个帮盲人跑者约陪跑员的 App，也是一篇论文的第一作者，论文研究 AI 智能体为什么做不好多步计划。
-我做的东西，大多是给那些被「默认设计」落下的人用的。
 
 [作品集：jaydenw.me](https://www.jaydenw.me) · [简历（PDF）](https://www.jaydenw.me/Jayden_Wang_Resume.pdf) · zw6963470@gmail.com
 
-| 项目 | 为什么做 | 我做了什么 | 现状 |
-|---|---|---|---|
-| [助盲跑 GuideRun](#助盲跑-guiderun) | 我每月两次给盲人跑者陪跑，听他们说很少有机会跑步 | 后端一个人写，接手 iOS，再移植到 Android | 30+ 盲人跑者和 30+ 陪跑员完成内测，iOS 版在 App Store 审核中 |
-| [AI 规划论文](#ai-智能体在-minecraft-里做规划) | 想要一个 Minecraft 助手，它却总是把计划弄丢 | 第一作者 | 已被 NeurIPS 2026 的一个 workshop 接受，AAAI-27 审稿中 |
-| [不打造影剂的增强 CT](#不打造影剂的增强-ct) | 增强 CT 要打造影剂，有些病人不能安全使用 | 全部研究代码，与华西医院合作 | 进行中。模型在没见过的病人上没有达标 |
-| [SafePath](#safepath) | 第一次一个人待在国外的城市，走哪条路全凭感觉 | 一个人做完 | [在线演示](https://safepath-black.vercel.app)，拿到了大学学分 |
+| 项目和我做的部分 | 为什么做，现在怎样 |
+|---|---|
+| [助盲跑 GuideRun](#助盲跑-guiderun)<br>后端一个人写，从队友手里接手 iOS，再移植到 Android | 我每月两次给盲人跑者陪跑，听他们说很少有机会跑步。<br>**现状：**30+ 盲人跑者和 30+ 陪跑员完成内测，iOS 版在 App Store 审核中 |
+| [AI 规划论文](#ai-智能体在-minecraft-里做规划)<br>第一作者 | 想要一个 Minecraft 助手，它却总是把计划弄丢。<br>**现状：**已被 NeurIPS 2026 的一个 workshop 接受，AAAI-27 审稿中 |
+| [不打造影剂的增强 CT](#不打造影剂的增强-ct)<br>研究和代码都是我做的，华西医院提供影像 | 增强 CT 要打造影剂，有些病人不能安全使用。<br>**现状：**进行中。模型在没见过的病人上没有达标 |
+| [SafePath](#safepath)<br>一个人做完 | 第一次一个人待在国外的城市，走哪条路全凭感觉。<br>**现状：**[在线演示](https://safepath-black.vercel.app)，拿到了大学学分 |
 
 ---
 
@@ -42,7 +41,7 @@
   <img src="assets/guiderun-4.jpg" width="190" alt="求助与安全页：播报我的位置、拨打紧急联系人、拨打 120 或 110">
 </p>
 
-大部分工作，是把我没问过别人就定下来的东西改掉。抢单模式会让住得偏的跑者一直等不到人，我换成了系统派单。
+一开始有好几处我都想错了，是测试的人让我改过来的。抢单模式会让住得偏的跑者一直等不到人，我换成了系统派单。
 预约用表单，当时觉得理所当然。直到我闭上眼睛自己试了一次，才知道看不见屏幕时填一张表有多难，也真有一位盲人测试者卡在了表单里。
 第一版语音预约听错了跑者的话，却没有念出它听到了什么，就直接下了单。现在跑者只选三样，剩下的在电话里定。
 测试者提得最多的问题是我完全没想到的：到了约好的地方，两个人找不到对方。所以每次跑步前都要先通一个电话。
@@ -57,13 +56,13 @@
 
 </details>
 
-| | |
-|---|---|
-| 现状 | 30+ 盲人跑者和 30+ 陪跑志愿者完成了内测。iOS 版已提交 App Store 审核 |
-| 合作方 | 深圳市盲人协会 |
-| 我的角色 | 后端从第一次提交起就是我一个人写的。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的 |
-| 我的提交数（2026-11-15） | 后端 1,111 次里的 1,083 次（Java、Spring Boot、MySQL、Redis）。[iOS](https://github.com/Jayden23018/blind-run-ios) 918 次里的 840 次（Swift、SwiftUI）。Android 105 次里的 105 次（Kotlin、Compose） |
-| 更多 | [完整案例（英文）](https://www.jaydenw.me/work/blindrun) · [隐私政策与用户协议](https://jayden23018.github.io/blindrun-legal/)。后端和 Android 代码是私有的 |
+<table>
+<tr><td><b>现状</b></td><td>30+ 盲人跑者和 30+ 陪跑志愿者完成了内测。iOS 版已提交 App Store 审核</td></tr>
+<tr><td><b>合作方</b></td><td>深圳市盲人协会</td></tr>
+<tr><td><b>我的角色</b></td><td>后端从第一次提交起就是我一个人写的。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的</td></tr>
+<tr><td><b>我的提交数（2026-11-15）</b></td><td>后端 1,111 次里的 1,083 次（Java、Spring Boot、MySQL、Redis）。<a href="https://github.com/Jayden23018/blind-run-ios">iOS</a> 918 次里的 840 次（Swift、SwiftUI）。Android 105 次里的 105 次（Kotlin、Compose）</td></tr>
+<tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/blindrun">完整案例（英文）</a> · <a href="https://jayden23018.github.io/blindrun-legal/">隐私政策与用户协议</a>。后端和 Android 代码是私有的</td></tr>
+</table>
 
 ---
 
@@ -80,11 +79,11 @@
 我原本以为，一个聪明的示例挑选器能让小模型追上大模型。数据说不行（28% 对 50%），我们就按数据撑得住的结论把论文重写了。
 中途还发现一行配置写错了，挑选器的四个信号里有三个一直没起作用。我们改好后重跑了那几组实验。
 
-| | |
-|---|---|
-| 现状 | 已被 NeurIPS 2026 的 NEmo workshop 接受。AAAI-27 审稿中 |
-| 我的角色 | 第一作者，导师是 Dr. Li Ning（Stellaris AI）。方法是我设计的，评测是我搭的。多个机器人协作的部分由 Ziming Dai 完成 |
-| 更多 | [代码与数据](https://github.com/Jayden23018/existence-before-relevance) · [完整案例（英文）](https://www.jaydenw.me/work/llm-planning) |
+<table>
+<tr><td><b>现状</b></td><td>已被 NeurIPS 2026 的 NEmo workshop 接受。AAAI-27 审稿中</td></tr>
+<tr><td><b>我的角色</b></td><td>第一作者，导师是 Dr. Li Ning（Stellaris AI）。方法是我设计的，评测是我搭的。多个机器人协作的部分由 Ziming Dai 完成</td></tr>
+<tr><td><b>更多</b></td><td><a href="https://github.com/Jayden23018/existence-before-relevance">代码与数据</a> · <a href="https://www.jaydenw.me/work/llm-planning">完整案例（英文）</a></td></tr>
+</table>
 
 ---
 
@@ -107,12 +106,12 @@
 
 </details>
 
-| | |
-|---|---|
-| 现状 | 与四川大学华西医院的合作研究，进行中。还没有论文 |
-| 我的角色 | 医院提供影像和临床问题。研究和全部代码是我做的。2025 年 8 月开始，先用 GAN，后来改用扩散模型 |
-| 代码 | 因为涉及病人数据，保持私有。623 次提交，全是我的。Python、PyTorch、MONAI |
-| 更多 | [完整案例（英文）](https://www.jaydenw.me/work/virtual-cect) |
+<table>
+<tr><td><b>现状</b></td><td>与四川大学华西医院的合作研究，进行中。还没有论文</td></tr>
+<tr><td><b>我的角色</b></td><td>医院提供影像和临床问题。研究和全部代码是我做的。2025 年 8 月开始，先用 GAN，后来改用扩散模型</td></tr>
+<tr><td><b>代码</b></td><td>因为涉及病人数据，保持私有。623 次提交，全是我的。Python、PyTorch、MONAI</td></tr>
+<tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/virtual-cect">完整案例（英文）</a></td></tr>
+</table>
 
 ---
 
@@ -136,11 +135,11 @@
 
 </details>
 
-| | |
-|---|---|
-| 现状 | 已上线。谁都能打开[演示](https://safepath-black.vercel.app)规划一段路 |
-| 我的角色 | 宾大工程暑期学院（ESAP）的结业项目，一个人完成。拿到了大学学分和证书 |
-| 更多 | [代码](https://github.com/Jayden23018/safepath) · [完整案例（英文）](https://www.jaydenw.me/work/safepath) |
+<table>
+<tr><td><b>现状</b></td><td>已上线。谁都能打开<a href="https://safepath-black.vercel.app">演示</a>规划一段路</td></tr>
+<tr><td><b>我的角色</b></td><td>宾大工程暑期学院（ESAP）的结业项目，一个人完成。拿到了大学学分和证书</td></tr>
+<tr><td><b>更多</b></td><td><a href="https://github.com/Jayden23018/safepath">代码</a> · <a href="https://www.jaydenw.me/work/safepath">完整案例（英文）</a></td></tr>
+</table>
 
 ---
 
