@@ -3,17 +3,16 @@
 # Jayden Wang
 
 I'm Jayden, from Shenzhen. I built an app that matches blind runners with volunteer guides,
-and I'm the first author of a paper on why AI agents fail at multi-step plans. Most of what I
-build is for people the default design leaves out.
+and I'm the first author of a paper on why AI agents fail at multi-step plans.
 
 [Portfolio: jaydenw.me](https://www.jaydenw.me) · [Résumé (PDF)](https://www.jaydenw.me/Jayden_Wang_Resume.pdf) · zw6963470@gmail.com
 
-| Project | Why I started | What I did | Where it is now |
-|---|---|---|---|
-| [GuideRun · 助盲跑](#guiderun--助盲跑) | I guide blind runners twice a month. They told me how rarely they get to run | Wrote the backend alone, took over the iOS app, ported it to Android | 30+ blind runners and 30+ guides finished testing. The iOS app is in App Store review |
-| [AI planning paper](#ai-agents-that-plan-in-minecraft) | I wanted a Minecraft assistant, and it kept losing its plans | First author | Accepted at a NeurIPS 2026 workshop. In review at AAAI-27 |
-| [Contrast-free CT](#contrast-free-ct) | Some patients cannot safely receive the dye a contrast CT needs | All of the research code, with West China Hospital | Ongoing. The model failed on patients it had never seen |
-| [SafePath](#safepath) | My first time alone in a foreign city, I chose walking routes by instinct | Built it alone | [Live demo](https://safepath-black.vercel.app). It earned college credit |
+| Project and my part | Why I started, and where it is now |
+|---|---|
+| [GuideRun · 助盲跑](#guiderun--助盲跑)<br>I wrote the backend alone, took over the iOS app from a teammate and ported it to Android | I guide blind runners twice a month. They told me how rarely they get to run.<br>**Now:** 30+ blind runners and 30+ guides finished testing. The iOS app is in App Store review |
+| [AI planning paper](#ai-agents-that-plan-in-minecraft)<br>First author | I wanted a Minecraft assistant, and it kept losing its plans.<br>**Now:** accepted at a NeurIPS 2026 workshop, and in review at AAAI-27 |
+| [Contrast-free CT](#contrast-free-ct)<br>All of the research and code are mine. West China Hospital provided the scans | Some patients cannot safely receive the dye a contrast CT needs.<br>**Now:** ongoing. The model failed on patients it had never seen |
+| [SafePath](#safepath)<br>Built it alone | My first time alone in a foreign city, I chose walking routes by instinct.<br>**Now:** [live demo](https://safepath-black.vercel.app). It earned college credit |
 
 ---
 
@@ -45,7 +44,7 @@ This is a piece of the 92-second demo I showed at COSCon'26. [Watch all of it](a
   <img src="assets/guiderun-4.jpg" width="190" alt="Help and safety screen: announce my location, call my emergency contact, call 120 or 110">
 </p>
 
-Most of the work was undoing choices I had made without asking. An order-grabbing mode would
+I got several things wrong before the testers put me right. An order-grabbing mode would
 have left runners in remote areas waiting forever, so I replaced it with system dispatch. A
 booking form seemed the obvious choice. Only when I closed my eyes and tried it did I see how
 hard a form is without the screen, and one blind tester got stuck in it. Our first voice
@@ -64,13 +63,13 @@ the call comes before every run.
 
 </details>
 
-| | |
-|---|---|
-| Status | 30+ blind runners and 30+ volunteer guides have finished internal testing. The iOS app has been submitted for App Store review |
-| Partner | Shenzhen Association of the Blind |
-| My role | I wrote the backend alone, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android |
-| My commits, 15 Nov 2026 | Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). [iOS](https://github.com/Jayden23018/blind-run-ios) 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose) |
-| Read more | [Case study](https://www.jaydenw.me/work/blindrun) · [Privacy policy and user agreement](https://jayden23018.github.io/blindrun-legal/). The backend and Android code are private |
+<table>
+<tr><td><b>Status</b></td><td>30+ blind runners and 30+ volunteer guides have finished internal testing. The iOS app has been submitted for App Store review</td></tr>
+<tr><td><b>Partner</b></td><td>Shenzhen Association of the Blind</td></tr>
+<tr><td><b>My role</b></td><td>I wrote the backend alone, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
+<tr><td><b>My commits, 15 Nov 2026</b></td><td>Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). <a href="https://github.com/Jayden23018/blind-run-ios">iOS</a> 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose)</td></tr>
+<tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/blindrun">Case study</a> · <a href="https://jayden23018.github.io/blindrun-legal/">Privacy policy and user agreement</a>. The backend and Android code are private</td></tr>
+</table>
 
 ---
 
@@ -92,11 +91,11 @@ I had expected a smart example picker to let a small model match a large one. Th
 one-line bug that had switched off three of the picker's four signals. We fixed it and re-ran
 those experiments.
 
-| | |
-|---|---|
-| Status | Accepted at the NEmo workshop, NeurIPS 2026. In review at AAAI-27 |
-| My role | First author, advised by Dr. Li Ning (Stellaris AI). I designed the method and built the evaluation. Ziming Dai built the part where the bots work together |
-| Read more | [Code and data](https://github.com/Jayden23018/existence-before-relevance) · [Case study](https://www.jaydenw.me/work/llm-planning) |
+<table>
+<tr><td><b>Status</b></td><td>Accepted at the NEmo workshop, NeurIPS 2026. In review at AAAI-27</td></tr>
+<tr><td><b>My role</b></td><td>First author, advised by Dr. Li Ning (Stellaris AI). I designed the method and built the evaluation. Ziming Dai built the part where the bots work together</td></tr>
+<tr><td><b>Read more</b></td><td><a href="https://github.com/Jayden23018/existence-before-relevance">Code and data</a> · <a href="https://www.jaydenw.me/work/llm-planning">Case study</a></td></tr>
+</table>
 
 ---
 
@@ -125,12 +124,12 @@ All 49 patients came from one hospital, so I still do not know how it would do e
 
 </details>
 
-| | |
-|---|---|
-| Status | Ongoing research collaboration with West China Hospital, Sichuan University. No paper yet |
-| My role | The hospital provided the scans and the clinical question. The research and all of the code are mine. I started in August 2025 with a GAN and later moved to a diffusion model |
-| Code | Private, because of patient data. 623 commits, all mine. Python, PyTorch, MONAI |
-| Read more | [Case study](https://www.jaydenw.me/work/virtual-cect) |
+<table>
+<tr><td><b>Status</b></td><td>Ongoing research collaboration with West China Hospital, Sichuan University. No paper yet</td></tr>
+<tr><td><b>My role</b></td><td>The hospital provided the scans and the clinical question. The research and all of the code are mine. I started in August 2025 with a GAN and later moved to a diffusion model</td></tr>
+<tr><td><b>Code</b></td><td>Private, because of patient data. 623 commits, all mine. Python, PyTorch, MONAI</td></tr>
+<tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/virtual-cect">Case study</a></td></tr>
+</table>
 
 ---
 
@@ -156,11 +155,11 @@ high-risk blocks. The safe route crosses none and is 107 m longer.
 
 </details>
 
-| | |
-|---|---|
-| Status | Live. Anyone can open the [demo](https://safepath-black.vercel.app) and plan a walk |
-| My role | Solo final project at Penn's Engineering Summer Academy. It earned college credit and a certificate |
-| Read more | [Code](https://github.com/Jayden23018/safepath) · [Case study](https://www.jaydenw.me/work/safepath) |
+<table>
+<tr><td><b>Status</b></td><td>Live. Anyone can open the <a href="https://safepath-black.vercel.app">demo</a> and plan a walk</td></tr>
+<tr><td><b>My role</b></td><td>Solo final project at Penn's Engineering Summer Academy. It earned college credit and a certificate</td></tr>
+<tr><td><b>Read more</b></td><td><a href="https://github.com/Jayden23018/safepath">Code</a> · <a href="https://www.jaydenw.me/work/safepath">Case study</a></td></tr>
+</table>
 
 ---
 
