@@ -4,8 +4,9 @@
 
 <img src="assets/guided-run.jpg" align="right" width="34%" alt="At a guide-running training in a park, a runner with covered eyes runs beside a guide on a brick path, with more people running behind them">
 
-I'm Jayden, from Shenzhen. I built an app that matches blind runners with volunteer guides,
-and I'm the first author of a paper on why AI agents fail at multi-step plans.
+I'm Jayden, a high school student at SCIE in Shenzhen. I built an app that matches blind runners
+with volunteer guides, and I'm the first author of a paper on why AI agents fail at multi-step
+plans. I also compete in algorithms and math: USACO Gold, AIME qualifier.
 
 [Portfolio: jaydenw.me](https://www.jaydenw.me) · [Résumé (PDF)](https://www.jaydenw.me/Jayden_Wang_Resume.pdf) · zw6963470@gmail.com
 
@@ -157,6 +158,13 @@ high-risk blocks. The safe route crosses none and is 107 m longer.
 </table>
 
 ---
+
+## Honors
+
+- USACO Gold, 2026. USA Computing Olympiad, Gold division.
+- AIME qualifier, 2025. American Invitational Mathematics Examination, by invitation, for roughly the top 5% of AMC scorers.
+- AMC 12, top 5% nationally, 2024.
+- Silver, Senior Physics Challenge, 2025. Run by the British Physics Olympiad.
 
 ## Talks
 
