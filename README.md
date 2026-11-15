@@ -2,7 +2,7 @@
 
 # Jayden Wang
 
-<img src="assets/guided-run.jpg" align="right" width="38%" alt="At a guide-running training in a park, a runner with covered eyes runs beside a guide on a brick path, with more people running behind them">
+<img src="assets/guided-run.jpg" align="right" width="34%" alt="At a guide-running training in a park, a runner with covered eyes runs beside a guide on a brick path, with more people running behind them">
 
 I'm Jayden, from Shenzhen. I built an app that matches blind runners with volunteer guides,
 and I'm the first author of a paper on why AI agents fail at multi-step plans.

@@ -2,7 +2,7 @@
 
 # Jayden Wang
 
-<img src="assets/guided-run.jpg" align="right" width="38%" alt="公园里的一次陪跑培训：一位蒙着眼睛的跑者和一位陪跑员并排跑在砖路上，后面还有很多人在跑">
+<img src="assets/guided-run.jpg" align="right" width="34%" alt="公园里的一次陪跑培训：一位蒙着眼睛的跑者和一位陪跑员并排跑在砖路上，后面还有很多人在跑">
 
 我是 Jayden，在深圳。我做了一个帮盲人跑者约陪跑员的 App，也是一篇论文的第一作者，论文研究 AI 智能体为什么做不好多步计划。
 
