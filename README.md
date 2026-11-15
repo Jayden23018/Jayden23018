@@ -41,13 +41,19 @@ picks three things and the rest is settled in a phone call. The testers' top com
 I had never thought of: they struggled to find each other at the meeting spot. That is why
 the call comes before every run.
 
+Three designs I threw out:
+
+- Matching. My first design offered a run to one guide at a time, best match first, with 30 seconds to answer. I had ruled out a broadcast to every nearby guide, because the fastest thumb would beat the best match. It didn't survive the way people book. Runs get booked a day ahead, so the answer window had to grow to as long as an hour, and at an hour each, asking ten guides takes ten hours. Now the system invites the three best-matched guides together.
+- Two guides, one run. With three guides invited, two accepts can land milliseconds apart. My first guard was a version column with a loop that retried a rejected write three times. A test showed the loop had never once worked: a retry inside one transaction rereads the same stale copy of the row. Now each accept takes a row lock on the order, and the second guide is told the run is taken.
+- Emergencies. My first version notified the guide, waited 30 seconds for a confirmation, and only then reached the runner's emergency contacts. A runner who had actually fallen would have a family that heard nothing for those 30 seconds. Now the text to the emergency contacts waits for no one, and the guide is told in parallel.
+
 <details>
-<summary>Engineering notes</summary>
+<summary>More engineering notes</summary>
 
 - Every control has a spoken label for VoiceOver. Touch targets are 64 pt, and Apple's minimum is 44.
-- SOS sends only with a fresh GPS fix. The app never says "your family has been notified", because the SMS goes out later and can still fail. Before a run starts, the help button makes a direct call instead.
+- SOS sends only with a fresh GPS fix. The app never says "your family has been notified", because the SMS goes out later and can still fail.
 - A runner's phone number is shown masked, because VoiceOver reads the screen aloud in public.
-- One API spec in the backend is the source of truth for all three apps. CI fails if an app calls an endpoint that is not in it.
+- SOS messages have their own thread pool, so a slow SMS provider cannot make them wait behind normal traffic.
 
 </details>
 
@@ -56,7 +62,7 @@ the call comes before every run.
 <tr><td><b>Partner</b></td><td>Shenzhen Association of the Blind</td></tr>
 <tr><td><b>My role</b></td><td>I designed and built the backend on my own, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
 <tr><td><b>How I keep it correct</b></td><td>2,596 automated tests on the backend. One API spec for all three apps, and CI fails if an app calls an endpoint that is not in it. UI tests run Apple's accessibility audit on the main screens</td></tr>
-<tr><td><b>Stack</b></td><td>Backend in Java, Spring Boot, MySQL and Redis. <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> in Swift and SwiftUI. Android in Kotlin and Compose</td></tr>
+<tr><td><b>Stack</b></td><td>Backend in Java, Spring Boot, MySQL and Redis. <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> in Swift and SwiftUI. Android in Kotlin and Compose. I work with Claude Code as a coding assistant</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/blindrun">Case study</a> · <a href="https://jayden23018.github.io/blindrun-legal/">Privacy policy and user agreement</a>. The backend and Android code are private</td></tr>
 </table>
 
@@ -149,16 +155,6 @@ high-risk blocks. The safe route crosses none and is 107 m longer.
 <tr><td><b>My role</b></td><td>Solo final project at Penn's Engineering Summer Academy. It earned college credit and a certificate</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://github.com/Jayden23018/safepath">Code</a> · <a href="https://www.jaydenw.me/work/safepath">Case study</a></td></tr>
 </table>
-
----
-
-## How I work
-
-I decide what to build, how the system fits together, and what counts as done. I use an AI coding
-assistant, Claude Code, to move faster. The decisions stay with me. I set what each change must do, and nothing merges unless it passes the tests
-and checks I put in place. When a tester finds a problem, I work out the cause and choose the fix.
-Dispatch instead of order-grabbing, a phone call instead of a form, and what the app must never
-say after an SOS were all my calls.
 
 ---
 
