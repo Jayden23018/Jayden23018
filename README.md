@@ -1,209 +1,175 @@
 **English** · [中文](README.zh-CN.md)
 
-# Jayden
+# Jayden Wang
 
-I build software for real problems and real users. What I enjoy most is owning a system
-end to end — the app in someone's hand, the server behind it, the data underneath — and then
-checking that it actually works for the person using it. I'm drawn to information systems
-and to computing where software meets hardware.
+I'm Jayden, from Shenzhen. I built an app that matches blind runners with volunteer guides,
+and I'm the first author of a paper on why AI agents fail at multi-step plans. Most of what I
+build is for people the default design leaves out.
 
-| Project | The problem | What I did | Where it is now |
+[Portfolio: jaydenw.me](https://www.jaydenw.me) · [Résumé (PDF)](https://www.jaydenw.me/Jayden_Wang_Resume.pdf) · zw6963470@gmail.com
+
+| Project | Why I started | What I did | Where it is now |
 |---|---|---|---|
-| [AidRun · 助盲跑](#aidrun--助盲跑) | Blind runners need a sighted guide, but have no reliable way to book one | Built the iOS app, the backend and the Android app | Backend running in the cloud; app in pre-release testing |
-| [Minecraft planning study](#llm-agents-that-plan-in-minecraft) | LLM agents break down on long, multi-step plans | First author | Poster at the NEmo workshop, NeurIPS 2026 |
-| [Contrast-free CT](#contrast-free-ct-from-plain-scans) | Contrast CT needs an iodine injection that some patients can't safely take | Built the whole pipeline, with a hospital partner and an advisor | Ongoing; current model is below its target |
-| [SafePath](#safepath) | Map apps find the shortest walk, not the safest one | Built it alone | [Live demo](https://safepath-black.vercel.app) |
+| [GuideRun · 助盲跑](#guiderun--助盲跑) | I guide blind runners twice a month. They told me how rarely they get to run | Wrote the backend alone, took over the iOS app, ported it to Android | 30+ blind runners and 30+ guides finished testing. The iOS app is in App Store review |
+| [AI planning paper](#ai-agents-that-plan-in-minecraft) | I wanted a Minecraft assistant, and it kept losing its plans | First author | Accepted at a NeurIPS 2026 workshop. In review at AAAI-27 |
+| [Contrast-free CT](#contrast-free-ct) | Some patients cannot safely receive the dye a contrast CT needs | All of the research code, with West China Hospital | Ongoing. The model failed on patients it had never seen |
+| [SafePath](#safepath) | My first time alone in a foreign city, I chose walking routes by instinct | Built it alone | [Live demo](https://safepath-black.vercel.app). It earned college credit |
 
 ---
 
-## AidRun · 助盲跑
+## GuideRun · 助盲跑
+
+<img src="assets/guided-run.jpg" width="640" alt="A group run on a park path. At the front, a blind runner and a volunteer guide run side by side, joined by a short tether">
+
+I run. At a road race in Shenzhen I met blind runners doing the same, and I became a volunteer
+guide. Twice a month I run tethered to a blind runner. On those runs I heard how rarely they
+get to run. Their clubs had runners and had volunteers, but finding a guide still took phone
+calls and group chats. So I offered to build the app. I started in October 2025. It was first
+called BlindRun.
+
+<a href="assets/guiderun-demo.mp4"><img src="assets/guiderun-demo.gif" width="640" alt="Screen recording of the app: booking a run, the system finding a guide, the phone call, and the run itself"></a>
+
+This is a piece of the 92-second demo I showed at COSCon'26. [Watch all of it](assets/guiderun-demo.mp4). The captions are in Chinese, so here is what happens:
+
+1. The runner picks three things: a place, a date and a time slot.
+2. The system invites three nearby guides at a time. The first to accept gets the run.
+3. The runner calls the guide first. After the call the guide sends the meeting time and place, and the run is fixed once the runner confirms.
+4. During the run, one button reads distance, time and pace aloud. Both phones show the same numbers, and both get an alert if the two are separated.
+5. A 3-second press sends an SOS with the current location.
+6. After the run, the route and pace are saved.
 
 <p>
-  <img src="assets/aidrun-home.jpg" width="190" alt="Runner home screen: the next booked run and a button to book a new one">
-  <img src="assets/aidrun-voice-booking.jpg" width="190" alt="Voice booking screen: one large button to start speaking">
-  <img src="assets/aidrun-running.jpg" width="190" alt="During a run: distance, time and pace, with buttons to tell the guide to slow down">
-  <img src="assets/aidrun-safety.jpg" width="190" alt="Help and safety screen: announce location, call emergency contact, 120, 110">
+  <img src="assets/guiderun-1.jpg" width="190" alt="Booking screen: place, date and time slot, and one button to start finding a guide">
+  <img src="assets/guiderun-2.jpg" width="190" alt="A guide has accepted. The screen asks the runner to call the guide first">
+  <img src="assets/guiderun-3.jpg" width="190" alt="During a run: 2.35 km, time and pace, an SOS button, and a button that reads the numbers aloud">
+  <img src="assets/guiderun-4.jpg" width="190" alt="Help and safety screen: announce my location, call my emergency contact, call 120 or 110">
 </p>
 
-**The problem.** A blind runner can run outdoors with a sighted guide, usually linked by a
-short tether. Finding a guide for a specific time and place depends on who you happen to know.
-People who want to volunteer have no simple way to reach runners. And any booking tool has to
-work for someone who cannot see the screen.
+Most of the work was undoing choices I had made without asking. An order-grabbing mode would
+have left runners in remote areas waiting forever, so I replaced it with system dispatch. A
+booking form seemed the obvious choice. Only when I closed my eyes and tried it did I see how
+hard a form is without the screen, and one blind tester got stuck in it. Our first voice
+version misheard a runner and booked anyway, without saying what it had heard. Now the runner
+picks three things and the rest is settled in a phone call. The testers' top complaint was one
+I had never thought of: they struggled to find each other at the meeting spot. That is why
+the call comes before every run.
 
-**What it does.** The runner books a time and place by voice or by form. The system matches
-a nearby volunteer whose identity has been verified. Both then follow one shared flow: an intro
-phone call before a first run together, departure, meeting up, the run, and a run record.
-During the run the runner hears distance and pace, can tell the guide "a bit slower" or
-"just right" with one tap, and has an SOS button that sends their live location.
+<details>
+<summary>Engineering notes</summary>
 
-**How it works.** An iOS app (SwiftUI) and an Android app (Jetpack Compose) talk to a
-Spring Boot backend. REST handles bookings; WebSocket pushes new requests and live locations
-in real time. The server owns a 12-state order machine, so both phones always agree on what
-happens next. For voice booking, Apple's speech recognizer turns speech into text, an LLM (Qwen)
-on the backend pulls out the time and place, and the app reads them back for confirmation.
+- Every control has a spoken label for VoiceOver. Touch targets are 64 pt, and Apple's minimum is 44.
+- SOS sends only with a fresh GPS fix. The app never says "your family has been notified", because the SMS goes out later and can still fail. Before a run starts, the help button makes a direct call instead.
+- A runner's phone number is shown masked, because VoiceOver reads the screen aloud in public.
+- One API spec in the backend is the source of truth for all three apps. CI fails if an app calls an endpoint that is not in it.
 
-**What was hard**
+</details>
 
-- *Designing for people who can't see the screen.* Every control has a spoken label for
-  VoiceOver, touch targets are 64 pt (Apple's minimum is 44), and state changes are announced
-  out loud. UI tests run Apple's accessibility audit on the main screens on a real iPhone.
-- *An emergency button that never misleads.* SOS only sends with a fresh GPS fix. The app never
-  says "your family has been notified", because the SMS goes out later and can still fail.
-  Outside a run, the same button falls back to calling 120 or 110 and says plainly that
-  the app has not sent anything.
-- *Privacy when the screen talks.* VoiceOver speaks out loud in public. So a runner's phone
-  number is shown masked to the volunteer, and the full number is never read aloud.
-- *Keeping three apps in sync.* One OpenAPI spec in the backend is the single source of truth.
-  The iOS network code is generated from it. CI fails if an app calls an endpoint that isn't in
-  the spec, or if a backend change would break existing apps.
-
-**Results** (April – October 2026)
-
-| Part | Stack | My commits | Merged PRs | Automated tests |
-|---|---|---|---|---|
-| iOS app | Swift, SwiftUI, AMap, AVSpeech / Speech, ActivityKit | 533 of 611 | 285 | 1,884 |
-| Backend | Java 17, Spring Boot 3.5, MySQL, Redis, WebSocket | 969 of 988 | 447 | 2,082 |
-| Android app | Kotlin, Jetpack Compose, Retrofit | 93 of 98 | 88 | 3,458 |
-
-The backend runs on Alibaba Cloud, and the
-[privacy policy and user agreement](https://jayden23018.github.io/blindrun-legal/) are public.
-The app is in pre-release testing on real devices and is not on the App Store yet.
-
-**My role.** I wrote the backend from the first commit and ported the app to Android.
-The iOS app began as a teammate's prototype; I took it over in July 2026.
-Code: [iOS (public)](https://github.com/Jayden23018/blind-run-ios) · backend and Android are private.
+| | |
+|---|---|
+| Status | 30+ blind runners and 30+ volunteer guides have finished internal testing. The iOS app has been submitted for App Store review |
+| Partner | Shenzhen Association of the Blind |
+| My role | I wrote the backend alone, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android |
+| My commits, 15 Nov 2026 | Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). [iOS](https://github.com/Jayden23018/blind-run-ios) 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose) |
+| Read more | [Case study](https://www.jaydenw.me/work/blindrun) · [Privacy policy and user agreement](https://jayden23018.github.io/blindrun-legal/). The backend and Android code are private |
 
 ---
 
-## LLM agents that plan in Minecraft
+## AI agents that plan in Minecraft
 
-**The problem.** LLMs are now used to plan actions for game characters and robots. They are
-weak at long chains of prerequisites: to make one item you need another, which needs a third.
-Minecraft is a good place to measure this, because every recipe is known and a plan can be
-checked exactly.
+I wanted an assistant to spare me the boring parts of Minecraft, like collecting the same
+resources again and again. A small model on my own computer kept losing its plan halfway.
+I wanted to know why.
 
-**What we did.** We asked LLMs to write plans for a Minecraft agent and scored every plan with
-a rule-based checker that walks it step by step over a virtual inventory. We compared 7 models
-(from 8 billion to 671 billion parameters, where disclosed), with and without example plans
-added to the prompt. We also built SAER, a method that picks the most relevant examples using
-the game's recipe graph.
+We asked 7 language models to write plans for a Minecraft agent. A rule-based checker walked
+every plan step by step. We compared plans written with and without worked examples.
 
-**Results** (from the accepted paper)
+- Tasks that need a two-step chain of materials passed only 10–30% of the time without examples. Single-material tasks passed 45–95%.
+- Any example of the right kind closed most of the gap (+31 percentage points). Picking the best example added less (+12), and our planned statistical test did not confirm it.
+- Models copy mistakes from their examples. One invalid command showed up in 71.5% of the plans that saw it, and in none of the 505 plans that didn't.
 
-- For 5 of the 7 models, plans for two-step-chain tasks pass only 10–30% of the time without
-  examples, against 45–95% for single-material tasks.
-- Adding three examples of the same kind improves all five.
-- Randomly chosen examples of the right kind recover most of the gain (+31 percentage points).
-  Ranking them precisely adds a smaller +12 points, which our pre-planned statistical
-  correction did not confirm.
-- Models copy their examples word for word, mistakes included: one invalid command in the
-  combat examples shows up in 71.5% of plans that saw it, and in none of 505 plans that didn't.
-- Takeaway: giving the model a worked example matters more than picking the perfect one —
-  and the examples must be checked, because their errors get copied.
+I had expected a smart example picker to let a small model match a large one. The data said no
+(28% against 50%), so we rebuilt the paper around what the data did support. Midway we found a
+one-line bug that had switched off three of the picker's four signals. We fixed it and re-ran
+those experiments.
 
-**What was hard.** Our starting idea was that a smart example picker would let a small 8B model
-match a much larger one. Clean data said no (28% vs 50%), so we rebuilt the paper around what
-the data did support. Midway we found a one-line setup bug that had silently switched off three
-of the picker's four scoring signals; we fixed it and re-ran the affected experiments. We fixed
-the main metric and statistical tests (McNemar, with multiple-comparison correction) before
-looking at results, and reported the results that went against our method.
-
-**My role.** First author. I built the evaluation pipeline: cross-validation, the significance
-tables, and a replication on an open-weight model.
-Accepted as a poster at the NEmo workshop, NeurIPS 2026. Stack: JavaScript (Node.js, Mineflayer),
-Python. Code is private.
+| | |
+|---|---|
+| Status | Accepted at the NEmo workshop, NeurIPS 2026. In review at AAAI-27 |
+| My role | First author, advised by Dr. Li Ning (Stellaris AI). I designed the method and built the evaluation. Ziming Dai built the part where the bots work together |
+| Read more | [Code and data](https://github.com/Jayden23018/existence-before-relevance) · [Case study](https://www.jaydenw.me/work/llm-planning) |
 
 ---
 
-## Contrast-free CT from plain scans
+## Contrast-free CT
 
-**The problem.** To see blood vessels and tumors clearly on a CT scan, doctors inject an iodine
-contrast agent. Some patients can't safely receive it — because of allergies or kidney problems
-— and every injection adds cost and a second scan. Could a model take the plain scan and
-generate what the contrast scan would look like, as a reading aid next to the real images?
+Contrast-enhanced CT normally requires a dye injection that some patients cannot safely
+receive. With scans from West China Hospital, I tried to generate these images from plain
+scans instead, as an aid for the doctor reading them.
 
-**What I'm doing.** Research with a hospital partner and an advisor, on chest and abdominal CT
-from lung cancer patients. The goal is an aid for reading scans, not a replacement for a real
-contrast scan — a 2024 clinical study with far more data reached the same limit.
+Most papers I read used structural similarity to judge such a model, so I did the same. After
+one experiment the score was high. When I opened the generated image, the highlights were in
+all the wrong places. A plain scan and a contrast scan already look alike in structure, so the
+score could only confirm that. I wrote a new measure that checks whether the highlights are in
+the right place, and I tested the model patient by patient.
 
-**How it works.** The plain scan and the contrast scan are taken at different moments, so I
-first align them (image registration with elastix). I train two kinds of models — a GAN
-(pix2pix-style, predicting the change from the plain scan) and a one-step diffusion model —
-pre-trained on public CT datasets. Every result is checked with patient-level 5-fold
-cross-validation, so no patient is in both training and testing.
+On patients the model had never seen, the correlation between generated and real contrast was
+r = 0.31 for the chest and 0.18 for the abdomen. My target was 0.5. No patient reached it.
+All 49 patients came from one hospital, so I still do not know how it would do elsewhere.
 
-**Results — honestly.** The model is not there yet. Inside the body, the correlation between
-generated and real contrast images is r = 0.31 for the chest and 0.18 for the abdomen. The
-target I set was 0.5, and no single patient reached it. I report this as a clear result,
-not as "we need more data".
+<details>
+<summary>Engineering notes</summary>
 
-**What was hard**
+- An early score of r = 0.61 came from 5 patients. Changing only which slices were sampled moved the same model from 0.61 to 0.40. I now version every metric.
+- The two scans are taken at different moments and do not line up. A reference with perfect anatomy but average brightness reaches only r ≈ 0.38 on the chest, so part of the gap is misalignment and not the model.
+- Data that leaves the hospital machine is pseudonymized and date-shifted. No patient images are published.
 
-- *The ruler kept moving.* An early score of r = 0.61 came from 5 patients and a different
-  setup. Just changing which slices were sampled moved r from 0.61 to 0.40 on the same model.
-  I now version every metric and never put numbers from different setups in one table.
-- *Model error vs. measurement error.* Because the two scans don't line up perfectly, part of
-  the "missing contrast" is misalignment, not the model. A reference built with perfect
-  anatomy but average brightness only reaches r ≈ 0.38 on the chest — so I stopped treating
-  the gap to 0.5 as the model's fault alone.
-- *Choosing the right checkpoint.* The metric first used to pick the best model rewarded
-  simply copying the input scan. I replaced it with one that looks at the enhanced regions.
-- *Patient privacy.* I wrote a privacy audit of the whole data flow. Data that leaves the
-  hospital machine is pseudonymized and date-shifted, and no patient images are published.
+</details>
 
-**My role.** I built the whole pipeline — data processing, registration, training and
-evaluation (about 600 commits since July 2026). Python, PyTorch, MONAI, Diffusers, SimpleITK.
-Code and data are private.
+| | |
+|---|---|
+| Status | Ongoing research collaboration with West China Hospital, Sichuan University. No paper yet |
+| My role | The hospital provided the scans and the clinical question. The research and all of the code are mine. I started in August 2025 with a GAN and later moved to a diffusion model |
+| Code | Private, because of patient data. 623 commits, all mine. Python, PyTorch, MONAI |
+| Read more | [Case study](https://www.jaydenw.me/work/virtual-cect) |
 
 ---
 
 ## SafePath
 
-<img src="assets/safepath-routes.jpg" width="760" alt="Map near Penn: the shortest route in blue and the safest route in green, with high-risk streets in red">
+<img src="assets/safepath-routes.jpg" width="640" alt="Map near Penn. The shortest route is blue, the safest route is green, and high-risk streets are red">
 
-**The problem.** Map apps optimize for distance. For a student walking home at night, the
-shortest way can run through blocks with a long history of street crime. Broken sidewalks,
-missing curb ramps and dark streets never show up in routing at all.
+In summer 2026 I was in a foreign city on my own for the first time. I picked my walking routes
+by instinct, and I had no way to tell whether the instinct was any good. Map apps answer
+"shortest". I wanted one that also answers "safest".
 
-**What it does.** Pick a start and an end near Penn. SafePath draws the shortest route (blue)
-and the safest route (green), marks the risky blocks the safe route avoided (red), and explains
-in plain words why it chose that route. Anyone can report a sidewalk problem, and the next
-route avoids that block.
+Pick a start and an end near Penn. SafePath draws both routes on one map and tells you what the
+safer one costs. On the walk from Penn Park to Mill Creek, the shortest route crosses 10
+high-risk blocks. The safe route crosses none and is 107 m longer.
 
-**How it works.** I built a walking graph of the 3.5 km around campus from OpenStreetMap.
-About 107,000 past crime reports from OpenDataPhilly are spread onto nearby streets (within
-120 m, weighted by distance). Each street gets a risk score, and its cost becomes
-`length × (1 + 1.5 × risk)`. Dijkstra's shortest-path algorithm runs twice — once on plain
-length, once on this cost — and both routes are drawn.
+<details>
+<summary>How it works</summary>
 
-**What was hard**
+- The street network comes from OpenStreetMap. The risk score comes from 106,881 incidents recorded by the city of Philadelphia.
+- Dijkstra's algorithm runs twice, once on distance and once on distance weighted by risk.
+- Raw crime counts made short crosswalks look dangerous just for being short. Ranking by percentile fixed that.
+- The README lists 13 limits. The first is "historical crime is not a prediction".
 
-- Raw crime counts made short crosswalk segments look dangerous just for being short.
-  Ranking risk by percentile fixed that.
-- One incident counts toward every street within 120 m, so a total per route would count the
-  same incident many times. The app lists the most common incident types instead of a number.
-- A hosted demo can't keep user reports between restarts. I wrote that down, together with
-  12 other limits, in the README — starting with "historical crime is not a prediction".
+</details>
 
-**My role.** Solo final project for a University of Pennsylvania summer program.
-Python, Flask, Pandas, OpenStreetMap, Leaflet.
-[Code](https://github.com/Jayden23018/safepath) · [Live demo](https://safepath-black.vercel.app)
+| | |
+|---|---|
+| Status | Live. Anyone can open the [demo](https://safepath-black.vercel.app) and plan a walk |
+| My role | Solo final project at Penn's Engineering Summer Academy. It earned college credit and a certificate |
+| Read more | [Code](https://github.com/Jayden23018/safepath) · [Case study](https://www.jaydenw.me/work/safepath) |
 
 ---
 
-## Smaller projects
+## Talks
 
-- **Physics demo** — interactive double-pendulum chaos simulation with an AI chat tutor.
-  React, TypeScript, Vite.
-- **Chinese slide generator** (private) — generic slide tools break Chinese typesetting, so this
-  makes single-file HTML decks that work offline, with embedded subset fonts and vector PDF export.
-- **Personal site** — Astro, MDX, GSAP; my résumé is typeset in Typst.
+- COSCon'26, the 11th China Open Source Conference, Hangzhou, November 2026. I gave a talk of about 30 minutes on GuideRun at the Youth Open Source Forum. I also sat on the main-forum roundtable on the next generation of open-source talent.
+- COSCon'25, the 10th China Open Source Conference, Beijing. I was invited to the Youth Open Source Forum with Ziming Dai, and presented the method from my paper. [Talk page](https://www.jaydenw.me/work/coscon25)
 
-## Tools I use day to day
+## Also
 
-Swift / SwiftUI · Java / Spring Boot · Kotlin / Compose · Python / PyTorch · TypeScript / React ·
-MySQL · Redis · Git & GitHub Actions
-
-## Contact
-
-zw6963470@gmail.com
+- [Physics demo](https://github.com/Jayden23018/Physic-demo), a double-pendulum simulation you can play with, with an AI tutor. React and TypeScript.
+- [jaydenw.me](https://www.jaydenw.me), my portfolio site. I wrote it by hand in Astro.
