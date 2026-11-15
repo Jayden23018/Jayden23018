@@ -63,7 +63,7 @@ Three designs I threw out:
 <tr><td><b>Partner</b></td><td>Shenzhen Association of the Blind</td></tr>
 <tr><td><b>My role</b></td><td>I designed and built the backend on my own, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
 <tr><td><b>How I keep it correct</b></td><td>2,596 automated tests on the backend. One API spec for all three apps, and CI fails if an app calls an endpoint that is not in it. UI tests run Apple's accessibility audit on the main screens</td></tr>
-<tr><td><b>Stack</b></td><td>Backend in Java, Spring Boot, MySQL and Redis. <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> in Swift and SwiftUI. Android in Kotlin and Compose. I work with Claude Code as a coding assistant</td></tr>
+<tr><td><b>Stack</b></td><td>Backend in Java, Spring Boot, MySQL and Redis. <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> in Swift and SwiftUI. Android in Kotlin and Compose. I work with Claude Code as a coding assistant, and I read every change before it merges</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/blindrun">Case study</a> · <a href="https://jayden23018.github.io/blindrun-legal/">Privacy policy and user agreement</a>. The backend and Android code are private</td></tr>
 </table>
 
