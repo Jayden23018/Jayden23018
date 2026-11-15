@@ -55,7 +55,7 @@ the call comes before every run.
 <tr><td><b>Status</b></td><td>30+ blind runners and 30+ volunteer guides have finished internal testing. The iOS app has been submitted for App Store review</td></tr>
 <tr><td><b>Partner</b></td><td>Shenzhen Association of the Blind</td></tr>
 <tr><td><b>My role</b></td><td>I wrote the backend alone, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
-<tr><td><b>My commits, 15 Nov 2026</b></td><td>Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). <a href="https://github.com/Jayden23018/blind-run-ios">iOS</a> 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose)</td></tr>
+<tr><td><b>My commits, 15 Nov 2026</b></td><td>Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose)</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/blindrun">Case study</a> · <a href="https://jayden23018.github.io/blindrun-legal/">Privacy policy and user agreement</a>. The backend and Android code are private</td></tr>
 </table>
 
