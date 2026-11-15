@@ -48,7 +48,7 @@
 <tr><td><b>现状</b></td><td>30+ 盲人跑者和 30+ 陪跑志愿者完成了内测。iOS 版已提交 App Store 审核</td></tr>
 <tr><td><b>合作方</b></td><td>深圳市盲人协会</td></tr>
 <tr><td><b>我的角色</b></td><td>后端从第一次提交起就是我一个人写的。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的</td></tr>
-<tr><td><b>我的提交数（2026-11-15）</b></td><td>后端 1,111 次里的 1,083 次（Java、Spring Boot、MySQL、Redis）。<a href="https://github.com/Jayden23018/blind-run-ios">iOS</a> 918 次里的 840 次（Swift、SwiftUI）。Android 105 次里的 105 次（Kotlin、Compose）</td></tr>
+<tr><td><b>我的提交数（2026-11-15）</b></td><td>后端 1,111 次里的 1,083 次（Java、Spring Boot、MySQL、Redis）。<a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 918 次里的 840 次（Swift、SwiftUI）。Android 105 次里的 105 次（Kotlin、Compose）</td></tr>
 <tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/blindrun">完整案例（英文）</a> · <a href="https://jayden23018.github.io/blindrun-legal/">隐私政策与用户协议</a>。后端和 Android 代码是私有的</td></tr>
 </table>
 
