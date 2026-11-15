@@ -4,7 +4,7 @@
 
 <img src="assets/guided-run.jpg" align="right" width="34%" alt="公园里的一次陪跑培训：一位蒙着眼睛的跑者和一位陪跑员并排跑在砖路上，后面还有很多人在跑">
 
-我是 Jayden，在深圳。我做了一个帮盲人跑者约陪跑员的 App，也是一篇论文的第一作者，论文研究 AI 智能体为什么做不好多步计划。
+我是 Jayden，深圳 SCIE 的高中生。我做了一个帮盲人跑者约陪跑员的 App，也是一篇论文的第一作者，论文研究 AI 智能体为什么做不好多步计划。我也参加算法和数学竞赛：USACO 金级、AIME 晋级。
 
 [作品集：jaydenw.me](https://www.jaydenw.me) · [简历（PDF）](https://www.jaydenw.me/Jayden_Wang_Resume.pdf) · zw6963470@gmail.com
 
@@ -137,6 +137,13 @@
 </table>
 
 ---
+
+## 奖项
+
+- USACO 金级，2026。美国计算机奥林匹克，Gold 组。
+- AIME 晋级，2025。美国数学邀请赛，只邀请 AMC 成绩约前 5% 的学生。
+- AMC 12 全国前 5%，2024。
+- Senior Physics Challenge 银奖，2025。由英国物理奥林匹克（BPhO）主办。
 
 ## 演讲
 
