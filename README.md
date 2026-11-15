@@ -11,7 +11,7 @@ and I'm the first author of a paper on why AI agents fail at multi-step plans.
 
 | Project and my part | Why I started, and where it is now |
 |---|---|
-| [GuideRun · 助盲跑](#guiderun--助盲跑)<br>I wrote the backend alone, took over the iOS app from a teammate and ported it to Android | I guide blind runners twice a month. They told me how rarely they get to run.<br>**Now:** 30+ blind runners and 30+ guides finished internal testing. The iOS app is in App Store review |
+| [GuideRun · 助盲跑](#guiderun--助盲跑)<br>I designed and built the backend on my own, took over the iOS app from a teammate and ported it to Android | I guide blind runners twice a month. They told me how rarely they get to run.<br>**Now:** 30+ blind runners and 30+ guides finished internal testing. The iOS app is in App Store review |
 | [AI planning paper](#ai-agents-that-plan-in-minecraft)<br>First author | I wanted a Minecraft assistant, and it kept losing its plans.<br>**Now:** accepted at a NeurIPS 2026 workshop, and in review at AAAI-27 |
 | [Contrast-free CT](#contrast-free-ct)<br>All of the research and code are mine. West China Hospital provided the scans | Some patients cannot safely receive the dye a contrast CT needs.<br>**Now:** ongoing. The model failed on patients it had never seen |
 | [SafePath](#safepath)<br>Built it alone | My first time alone in a foreign city, I chose walking routes by instinct.<br>**Now:** [live demo](https://safepath-black.vercel.app). It earned college credit |
@@ -54,8 +54,9 @@ the call comes before every run.
 <table>
 <tr><td><b>Status</b></td><td>30+ blind runners and 30+ volunteer guides have finished internal testing. The iOS app has been submitted for App Store review</td></tr>
 <tr><td><b>Partner</b></td><td>Shenzhen Association of the Blind</td></tr>
-<tr><td><b>My role</b></td><td>I wrote the backend alone, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
-<tr><td><b>My commits, 15 Nov 2026</b></td><td>Backend 1,083 of 1,111 (Java, Spring Boot, MySQL, Redis). <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 840 of 918 (Swift, SwiftUI). Android 105 of 105 (Kotlin, Compose)</td></tr>
+<tr><td><b>My role</b></td><td>I designed and built the backend on my own, from the first commit. A teammate started the iOS app and I took it over in July 2026. I ported it to Android</td></tr>
+<tr><td><b>How I keep it correct</b></td><td>2,596 automated tests on the backend. One API spec for all three apps, and CI fails if an app calls an endpoint that is not in it. UI tests run Apple's accessibility audit on the main screens</td></tr>
+<tr><td><b>Stack</b></td><td>Backend in Java, Spring Boot, MySQL and Redis. <a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> in Swift and SwiftUI. Android in Kotlin and Compose</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/blindrun">Case study</a> · <a href="https://jayden23018.github.io/blindrun-legal/">Privacy policy and user agreement</a>. The backend and Android code are private</td></tr>
 </table>
 
@@ -115,7 +116,7 @@ All 49 patients came from one hospital, so I still do not know how it would do e
 <table>
 <tr><td><b>Status</b></td><td>Ongoing research collaboration with West China Hospital, Sichuan University. No paper yet</td></tr>
 <tr><td><b>My role</b></td><td>The hospital provided the scans and the clinical question. The research and all of the code are mine. I started in August 2025 with a GAN and later moved to a diffusion model</td></tr>
-<tr><td><b>Code</b></td><td>Private, because of patient data. 623 commits, all mine. Python, PyTorch, MONAI</td></tr>
+<tr><td><b>Code</b></td><td>Private, because of patient data. Python, PyTorch, MONAI</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://www.jaydenw.me/work/virtual-cect">Case study</a></td></tr>
 </table>
 
@@ -148,6 +149,16 @@ high-risk blocks. The safe route crosses none and is 107 m longer.
 <tr><td><b>My role</b></td><td>Solo final project at Penn's Engineering Summer Academy. It earned college credit and a certificate</td></tr>
 <tr><td><b>Read more</b></td><td><a href="https://github.com/Jayden23018/safepath">Code</a> · <a href="https://www.jaydenw.me/work/safepath">Case study</a></td></tr>
 </table>
+
+---
+
+## How I work
+
+I decide what to build, how the system fits together, and what counts as done. I use an AI coding
+assistant, Claude Code, to move faster. The decisions stay with me. I set what each change must do, and nothing merges unless it passes the tests
+and checks I put in place. When a tester finds a problem, I work out the cause and choose the fix.
+Dispatch instead of order-grabbing, a phone call instead of a form, and what the app must never
+say after an SOS were all my calls.
 
 ---
 

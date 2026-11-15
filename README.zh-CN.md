@@ -10,7 +10,7 @@
 
 | 项目和我做的部分 | 为什么做，现在怎样 |
 |---|---|
-| [助盲跑 GuideRun](#助盲跑-guiderun)<br>后端一个人写，从队友手里接手 iOS，再移植到 Android | 我每月两次给盲人跑者陪跑，听他们说很少有机会跑步。<br>**现状：**30+ 盲人跑者和 30+ 陪跑员完成内测，iOS 版在 App Store 审核中 |
+| [助盲跑 GuideRun](#助盲跑-guiderun)<br>后端由我一个人设计和搭建，从队友手里接手 iOS，再移植到 Android | 我每月两次给盲人跑者陪跑，听他们说很少有机会跑步。<br>**现状：**30+ 盲人跑者和 30+ 陪跑员完成内测，iOS 版在 App Store 审核中 |
 | [AI 规划论文](#ai-智能体在-minecraft-里做规划)<br>第一作者 | 想要一个 Minecraft 助手，它却总是把计划弄丢。<br>**现状：**已被 NeurIPS 2026 的一个 workshop 接受，AAAI-27 审稿中 |
 | [不打造影剂的增强 CT](#不打造影剂的增强-ct)<br>研究和代码都是我做的，华西医院提供影像 | 增强 CT 要打造影剂，有些病人不能安全使用。<br>**现状：**进行中。模型在没见过的病人上没有达标 |
 | [SafePath](#safepath)<br>一个人做完 | 第一次一个人待在国外的城市，走哪条路全凭感觉。<br>**现状：**[在线演示](https://safepath-black.vercel.app)，拿到了大学学分 |
@@ -47,8 +47,9 @@
 <table>
 <tr><td><b>现状</b></td><td>30+ 盲人跑者和 30+ 陪跑志愿者完成了内测。iOS 版已提交 App Store 审核</td></tr>
 <tr><td><b>合作方</b></td><td>深圳市盲人协会</td></tr>
-<tr><td><b>我的角色</b></td><td>后端从第一次提交起就是我一个人写的。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的</td></tr>
-<tr><td><b>我的提交数（2026-11-15）</b></td><td>后端 1,111 次里的 1,083 次（Java、Spring Boot、MySQL、Redis）。<a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 918 次里的 840 次（Swift、SwiftUI）。Android 105 次里的 105 次（Kotlin、Compose）</td></tr>
+<tr><td><b>我的角色</b></td><td>后端从第一次提交起就由我一个人设计和搭建。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的</td></tr>
+<tr><td><b>怎么保证它是对的</b></td><td>后端有 2,596 个自动测试。三端共用一份接口规范，App 调用了规范里没有的接口，CI 就不通过。界面测试会在主要页面上跑 Apple 的无障碍审计</td></tr>
+<tr><td><b>技术栈</b></td><td>后端 Java、Spring Boot、MySQL、Redis。<a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 用 Swift 和 SwiftUI。Android 用 Kotlin 和 Compose</td></tr>
 <tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/blindrun">完整案例（英文）</a> · <a href="https://jayden23018.github.io/blindrun-legal/">隐私政策与用户协议</a>。后端和 Android 代码是私有的</td></tr>
 </table>
 
@@ -97,7 +98,7 @@
 <table>
 <tr><td><b>现状</b></td><td>与四川大学华西医院的合作研究，进行中。还没有论文</td></tr>
 <tr><td><b>我的角色</b></td><td>医院提供影像和临床问题。研究和全部代码是我做的。2025 年 8 月开始，先用 GAN，后来改用扩散模型</td></tr>
-<tr><td><b>代码</b></td><td>因为涉及病人数据，保持私有。623 次提交，全是我的。Python、PyTorch、MONAI</td></tr>
+<tr><td><b>代码</b></td><td>因为涉及病人数据，保持私有。Python、PyTorch、MONAI</td></tr>
 <tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/virtual-cect">完整案例（英文）</a></td></tr>
 </table>
 
@@ -128,6 +129,14 @@
 <tr><td><b>我的角色</b></td><td>宾大工程暑期学院（ESAP）的结业项目，一个人完成。拿到了大学学分和证书</td></tr>
 <tr><td><b>更多</b></td><td><a href="https://github.com/Jayden23018/safepath">代码</a> · <a href="https://www.jaydenw.me/work/safepath">完整案例（英文）</a></td></tr>
 </table>
+
+---
+
+## 我怎么做事
+
+做什么、系统怎么搭、做到什么程度才算完成，这些由我来定。我用 AI 编程助手 Claude Code 来加快速度，决定仍然由我来做。
+每个改动要达到什么效果由我定，过不了我设的测试和检查就合不进去。测试的人发现问题，我来找原因、定怎么改。
+派单而不是抢单，打电话而不是填表，求助之后 App 绝不能说哪些话，这些都是我拿的主意。
 
 ---
 
