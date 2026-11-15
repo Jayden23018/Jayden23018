@@ -2,6 +2,8 @@
 
 # Jayden Wang
 
+<img src="assets/guided-run.jpg" align="right" width="38%" alt="At a guide-running training in a park, a runner with covered eyes runs beside a guide on a brick path, with more people running behind them">
+
 I'm Jayden, from Shenzhen. I built an app that matches blind runners with volunteer guides,
 and I'm the first author of a paper on why AI agents fail at multi-step plans.
 
@@ -18,31 +20,17 @@ and I'm the first author of a paper on why AI agents fail at multi-step plans.
 
 ## GuideRun · 助盲跑
 
-<img src="assets/guided-run.jpg" width="640" alt="A group run on a park path. At the front, a blind runner and a volunteer guide run side by side, joined by a short tether">
-
 I run. At a road race in Shenzhen I met blind runners doing the same, and I became a volunteer
 guide. Twice a month I run tethered to a blind runner. On those runs I heard how rarely they
 get to run. Their clubs had runners and had volunteers, but finding a guide still took phone
 calls and group chats. So I offered to build the app. I started in October 2025. It was first
 called BlindRun.
 
-<a href="assets/guiderun-demo.mp4"><img src="assets/guiderun-demo.gif" width="640" alt="Screen recording of the app: booking a run, the system finding a guide, the phone call, and the run itself"></a>
+<a href="assets/guiderun-demo.mp4"><img src="assets/guiderun-demo.gif" width="640" alt="Screen recording of the app with English subtitles: booking a run, the system finding a guide, the phone call, and the run itself"></a>
 
-This is a piece of the 92-second demo I showed at COSCon'26. [Watch all of it](assets/guiderun-demo.mp4). The captions are in Chinese, so here is what happens:
+This is part of the 92-second demo I showed at COSCon'26. I added English subtitles. [Watch all of it](assets/guiderun-demo.mp4).
 
-1. The runner picks three things: a place, a date and a time slot.
-2. The system invites three nearby guides at a time. The first to accept gets the run.
-3. The runner calls the guide first. After the call the guide sends the meeting time and place, and the run is fixed once the runner confirms.
-4. During the run, one button reads distance, time and pace aloud. Both phones show the same numbers, and both get an alert if the two are separated.
-5. A 3-second press sends an SOS with the current location.
-6. After the run, the route and pace are saved.
-
-<p>
-  <img src="assets/guiderun-1.jpg" width="190" alt="Booking screen: place, date and time slot, and one button to start finding a guide">
-  <img src="assets/guiderun-2.jpg" width="190" alt="A guide has accepted. The screen asks the runner to call the guide first">
-  <img src="assets/guiderun-3.jpg" width="190" alt="During a run: 2.35 km, time and pace, an SOS button, and a button that reads the numbers aloud">
-  <img src="assets/guiderun-4.jpg" width="190" alt="Help and safety screen: announce my location, call my emergency contact, call 120 or 110">
-</p>
+<img src="assets/guiderun-screens.jpg" width="820" alt="Four screens of the app with English labels: booking by place, date and time slot; a guide has accepted and the runner is asked to call first; during a run, with a button that reads the numbers aloud; the help screen with location, emergency contact, 120 and 110">
 
 I got several things wrong before the testers put me right. An order-grabbing mode would
 have left runners in remote areas waiting forever, so I replaced it with system dispatch. A
@@ -165,7 +153,7 @@ high-risk blocks. The safe route crosses none and is 107 m longer.
 
 ## Talks
 
-- COSCon'26, the 11th China Open Source Conference, Hangzhou, November 2026. I gave a talk of about 30 minutes on GuideRun at the Youth Open Source Forum. I also sat on the main-forum roundtable on the next generation of open-source talent.
+- COSCon'26, the 11th China Open Source Conference, Hangzhou, November 2026. I gave a talk of about 30 minutes on GuideRun at the Youth Open Source Forum. I also sat on the main-forum roundtable on the next generation of open-source talent ([announcement, in Chinese](https://www.sohu.com/a/1100311889_115128)).
 - COSCon'25, the 10th China Open Source Conference, Beijing. I was invited to the Youth Open Source Forum with Ziming Dai, and presented the method from my paper. [Talk page](https://www.jaydenw.me/work/coscon25)
 
 ## Also
