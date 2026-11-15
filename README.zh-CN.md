@@ -55,7 +55,7 @@
 <tr><td><b>合作方</b></td><td>深圳市盲人协会</td></tr>
 <tr><td><b>我的角色</b></td><td>后端从第一次提交起就由我一个人设计和搭建。iOS 版由队友起头，我 2026 年 7 月接手。Android 版是我移植的</td></tr>
 <tr><td><b>怎么保证它是对的</b></td><td>后端有 2,596 个自动测试。三端共用一份接口规范，App 调用了规范里没有的接口，CI 就不通过。界面测试会在主要页面上跑 Apple 的无障碍审计</td></tr>
-<tr><td><b>技术栈</b></td><td>后端 Java、Spring Boot、MySQL、Redis。<a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 用 Swift 和 SwiftUI。Android 用 Kotlin 和 Compose。我用 Claude Code 做编程助手</td></tr>
+<tr><td><b>技术栈</b></td><td>后端 Java、Spring Boot、MySQL、Redis。<a href="https://github.com/Jayden23018/guiderun-ios">iOS</a> 用 Swift 和 SwiftUI。Android 用 Kotlin 和 Compose。我用 Claude Code 做编程助手，每个改动合并前我都会自己看一遍</td></tr>
 <tr><td><b>更多</b></td><td><a href="https://www.jaydenw.me/work/blindrun">完整案例（英文）</a> · <a href="https://jayden23018.github.io/blindrun-legal/">隐私政策与用户协议</a>。后端和 Android 代码是私有的</td></tr>
 </table>
 
