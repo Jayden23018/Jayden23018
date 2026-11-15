@@ -11,7 +11,7 @@ and I'm the first author of a paper on why AI agents fail at multi-step plans.
 
 | Project and my part | Why I started, and where it is now |
 |---|---|
-| [GuideRun · 助盲跑](#guiderun--助盲跑)<br>I wrote the backend alone, took over the iOS app from a teammate and ported it to Android | I guide blind runners twice a month. They told me how rarely they get to run.<br>**Now:** 30+ blind runners and 30+ guides finished testing. The iOS app is in App Store review |
+| [GuideRun · 助盲跑](#guiderun--助盲跑)<br>I wrote the backend alone, took over the iOS app from a teammate and ported it to Android | I guide blind runners twice a month. They told me how rarely they get to run.<br>**Now:** 30+ blind runners and 30+ guides finished internal testing. The iOS app is in App Store review |
 | [AI planning paper](#ai-agents-that-plan-in-minecraft)<br>First author | I wanted a Minecraft assistant, and it kept losing its plans.<br>**Now:** accepted at a NeurIPS 2026 workshop, and in review at AAAI-27 |
 | [Contrast-free CT](#contrast-free-ct)<br>All of the research and code are mine. West China Hospital provided the scans | Some patients cannot safely receive the dye a contrast CT needs.<br>**Now:** ongoing. The model failed on patients it had never seen |
 | [SafePath](#safepath)<br>Built it alone | My first time alone in a foreign city, I chose walking routes by instinct.<br>**Now:** [live demo](https://safepath-black.vercel.app). It earned college credit |
