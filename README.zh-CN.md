@@ -177,7 +177,7 @@
 
 ## 其他
 
-- 双摆模拟，带一个 AI 答疑助手（React、TypeScript）
+- [双摆模拟](https://github.com/Jayden23018/Physic-demo)，带一个 AI 答疑助手（React、TypeScript）
 - [jaydenw.me](https://www.jaydenw.me)：作品集和个人网站（Astro）
 - 陪跑员培训分四个阶段，我 2026 年 11 月过了第一阶段
 - 乒乓球国家二级运动员，围棋业余 3 段，平时也拍照、航拍

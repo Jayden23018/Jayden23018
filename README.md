@@ -226,6 +226,6 @@ on those streets.
 
 ## Also
 
-- A double-pendulum simulation with an AI tutor (React, TypeScript).
+- [A double-pendulum simulation](https://github.com/Jayden23018/Physic-demo) with an AI tutor (React, TypeScript).
 - [jaydenw.me](https://www.jaydenw.me), my portfolio and personal site (Astro).
 - Away from the screen: I guide blind runners twice a month, and in November 2026 I passed stage one of four of guide training. Nationally certified Level-2 athlete in table tennis, amateur 3-dan in Go, and I take photos, some of them from a drone.
